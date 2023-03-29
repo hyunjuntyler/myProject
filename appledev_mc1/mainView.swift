@@ -10,18 +10,19 @@ struct mainView: View {
     @State var tag:Int? = nil
     
     var body: some View {
-        
-        ZStack{
-            NavigationLink(destination: ContentView(), tag: 2, selection: self.$tag ) {
-                EmptyView()
+        NavigationView{
+            ZStack{
+                NavigationLink(destination: ContentView(), tag: 2, selection: self.$tag ) {
+                    EmptyView()
+                }
+                
+                Button( action : {
+                    self.tag = 2
+                }) {
+                    Text("Button")
+                }
             }
-            
-            Button( action : {
-                self.tag = 2
-            }) {
-                Text("Button")
-            }
-        }
+        }.navigationBarHidden(true)
     }
 }
 
@@ -31,3 +32,4 @@ struct mainView_Previews: PreviewProvider {
         mainView().previewInterfaceOrientation(.landscapeRight)
     }
 }
+
